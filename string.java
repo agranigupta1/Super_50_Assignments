@@ -1,3 +1,4 @@
+//java basics
 import java.util.*;
 class MyString{
     String s;
