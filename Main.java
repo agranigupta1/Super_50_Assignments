@@ -1,11 +1,13 @@
 import java.util.*;
 
 public class Main{
-    static Scanner sc = new Scanner(System.in);
+    static Scanner  sc=new Scanner(System.in);
     public static void main(String args[]){
-        MyString s1 = new MyString();
+        
+        
         System.out.println("Enter initial string:");
-        s1.setdata(sc.nextLine());
+        String string=sc.nextLine();
+        MyString s = new MyString(string);
         while(true){
             System.out.println("1.Append");
             System.out.println("2.Count words in current string");
@@ -24,52 +26,53 @@ public class Main{
             switch(c){
                 case 1:
                     System.out.println("Enter a string to be appended:");
-                    String r = sc.nextLine();
-                    s1.append(r);
-                    s1.showdata();
+                    String anotheString = sc.nextLine();
+                    System.out.println("the appended string is:"+s.append(anotheString));
+                    
                     break;
                 case 2:
-                    System.out.println("the no of words are:"+s1.countWords());
+                    System.out.println("the no of words are:"+s.countWords());
                     break;
                 case 3:
                     System.out.println("Enter character to be replaced:");
                     char e = sc.nextLine().charAt(0);
                     System.out.println("Enter new character:");
                     char d = sc.nextLine().charAt(0);
-                    s1.replace(e,d);
-                    s1.showdata();
+                    s.replace(e,d);
+                    
                     break;
                 case 4:
-                    System.out.println("The current string is palindrome or not: "+ s1.isPalindrome());
+                    System.out.println("The current string is palindrome or not: "+ s.isPalindrome());
                     break;
                 case 5:
                     System.out.println("Enter start index and length for splice:");
-                    int ind = sc.nextInt();
-                    int len = sc.nextInt();
+                    int index = sc.nextInt();
+                    int length = sc.nextInt();
                     sc.nextLine();
-                    s1.splice(ind,len);
-                    s1.showdata();
+                    System.out.println("the spliced string is:"+s.splice(index,length));
+                    
+                    
                     break;
                 case 6:
-                    System.out.println("The array of words is:" + s1.split());
+                    System.out.println("The array of words is:" + s.split());
                     break;
                 case 7:
-                    System.out.println("Most repeating character: "+ s1.maxrepeat());
+                    System.out.println("Most repeating character: "+ s.getmaxrepeat());
                     break;
                 case 8:
-                    s1.sort();
-                    s1.showdata();
+                    System.out.println("the sorted string is:"+s.sort());
+                    
                     break;
                 case 9:
                     System.out.println("Enter number of positions to left rotate:");
                     int n = sc.nextInt();
                     sc.nextLine();
-                    s1.shift(n);
-                    s1.showdata();
+                    System.out.println("the left rotated string is"+s.shift(n));
+                   
                     break;
                 case 10:
-                    s1.reverse();
-                    s1.showdata();
+                    System.out.println("the reversed string is:"+s.reverse());
+                    
                     break;
                case 11:
                System.exit(0);
