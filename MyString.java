@@ -21,10 +21,10 @@ public class MyString {
   int countWords() {
     int index = 0;
     String duplicate = "";
-    int cnt = 0;
+    int count = 0;
     while (index < this.string.length()) {
       if (this.string.charAt(index) == ' ') {
-        cnt++;
+        count++;
         index++;
         duplicate = "";
       }
@@ -37,8 +37,8 @@ public class MyString {
 
       index++;
     }
-    cnt++;
-    return cnt;
+    count++;
+    return count;
   }
 
   boolean isPalindrome() {
