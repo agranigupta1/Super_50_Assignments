@@ -7,32 +7,32 @@
 import java.util.*;
 
 public class MyString {
-  String s;
+  String string;
 
   MyString(String s) {
-    this.s = s;
+    string = s;
   }
 
   String append(String newString) {
-    this.s = this.s + newString;
-    return s;
+    this.string = this.string + newString;
+    return string;
   }
 
   int countWords() {
     int index = 0;
     String duplicate = "";
     int cnt = 0;
-    while (index < this.s.length()) {
-      if (s.charAt(index) == ' ') {
+    while (index < this.string.length()) {
+      if (this.string.charAt(index) == ' ') {
         cnt++;
         index++;
         duplicate = "";
       }
-      while (s.charAt(index) == ' ') {
+      while (this.string.charAt(index) == ' ') {
         index++;
       }
-      if (s.charAt(index) != ' ') {
-        duplicate += s.charAt(index);
+      if (this.string.charAt(index) != ' ') {
+        duplicate += this.string.charAt(index);
       }
 
       index++;
@@ -42,9 +42,9 @@ public class MyString {
   }
 
   boolean isPalindrome() {
-    int i = 0, j = s.length() - 1;
+    int i = 0, j = this.string.length() - 1;
     while (i <= j) {
-      if (s.charAt(i) != s.charAt(j)) {
+      if (this.string.charAt(i) != this.string.charAt(j)) {
         return false;
       }
       i++;
@@ -54,49 +54,51 @@ public class MyString {
   }
 
   String replace(char a, char b) {
-    char[] arr = s.toCharArray();
+    char[] arr = this.string.toCharArray();
     for (int i = 0; i < arr.length; i++) {
       if (arr[i] == a) {
         arr[i] = b;
       }
     }
-    s = new String(arr);
-    return s;
+    this.string = new String(arr);
+    return this.string;
   }
 
   String splice(int start, int len) {
-    if (start < 0 || start >= s.length() || len < 0 || start + len > s.length()) {
+    if (start < 0 || start >= this.string.length() || len < 0 || start + len > this.string.length()) {
       System.out.println("invalid input");
       return "";
     }
-    String splicedString = s.substring(0, start) + s.substring(start + len);
+    String splicedString = this.string.substring(0, start) + this.string.substring(start + len);
     return splicedString;
   }
 
-  List<String> split() {
-    String a = "";
-    List<String> list = new ArrayList<>();
+  String[] split() {
+    String string = "";
+    String[] list = {};
+    int size=countWords();
     int i = 0;
-    while (i < s.length()) {
-      char x = s.charAt(i);
-      if (Character.isWhitespace(x)) {
-        if (a != null) {
-          list.add(a);
-          a = "";
+    int j=0;
+    while (i < this.string.length()) {
+      char character = this.string.charAt(i);
+      if (Character.isWhitespace(character)) {
+        if (string != null) {
+          list[j++]=string;
+          string = "";
         }
       } else {
-        a += x;
+        string += character;
       }
       i++;
     }
-    list.add(a);
+    list[size-1]=string;
     return list;
   }
 
-  char maxrepeat() {
+  char getmaxrepeat() {
     int[] arr = new int[26];
-    for (int i = 0; i < s.length(); i++) {
-      char x = s.charAt(i);
+    for (int i = 0; i < this.string.length(); i++) {
+      char x = this.string.charAt(i);
       arr[x - 'a']++;
     }
     int maxx = 0;
@@ -112,18 +114,18 @@ public class MyString {
 
   String shift(int n) {
     // left shift
-    String r = s;
+    String shiftedstring = this.string;
     splice(0, n);
     for (int i = 0; i < n; i++) {
-      s += r.charAt(i);
+      this.string += shiftedstring.charAt(i);
     }
-    return s;
+    return this.string;
   }
 
   String sort() {
     int arr[] = new int[26];
-    for (int i = 0; i < s.length(); i++) {
-      char x = s.charAt(i);
+    for (int i = 0; i < this.string.length(); i++) {
+      char x = this.string.charAt(i);
       arr[x - 'a']++;
     }
     String answer = "";
@@ -136,10 +138,10 @@ public class MyString {
   }
 
   String reverse() {
-    String revString = "";
-    for (int i = s.length() - 1; i >= 0; i--) {
-      revString += this.s.charAt(i);
+    String reverseString = "";
+    for (int i = this.string.length() - 1; i >= 0; i--) {
+      reverseString += this.string.charAt(i);
     }
-    return revString;
+    return reverseString;
   }
 }

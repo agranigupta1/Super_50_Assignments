@@ -57,7 +57,7 @@ public class Main{
                     System.out.println("The array of words is:" + s.split());
                     break;
                 case 7:
-                    System.out.println("Most repeating character: "+ s.maxrepeat());
+                    System.out.println("Most repeating character: "+ s.getmaxrepeat());
                     break;
                 case 8:
                     System.out.println("the sorted string is:"+s.sort());
